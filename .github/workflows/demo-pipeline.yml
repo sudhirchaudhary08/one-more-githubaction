@@ -1,16 +1,22 @@
-name: first workflow  # Fixed spelling from 'frist' to 'first'
+name: Cowsay Pipeline
 
 on: push
 
 jobs:
-  first_job:  # Fixed spelling from 'frist_job' to 'first_job'
+  cowsay_job:
     runs-on: ubuntu-latest
-
     steps:
-      - name: check out repo
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: run the script
-        run: |
-         chmod +x dog.sh
-         ./dog.sh
+      - name: Install Cowsay and Dependencies
+        run: sudo apt-get update && sudo apt-get install -y cowsay
+
+      - name: Download Dog Cowfile
+        run: wget -O /usr/share/cowsay/cows/dog.cow https://raw.githubusercontent.com/paulkaefer/cowsay-files/master/cows/dog.cow
+
+      - name: Make Script Executable
+        run: chmod +x dog.sh
+
+      - name: Run Dog Cowfile
+        run: cowsay -f dog "Hello from GitHub Actions!"
