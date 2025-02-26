@@ -13,4 +13,4 @@ jobs:
       - name: run the script
         run: |
          chmod +x cowart.sh
-         ./cowart.sh
+         ./dog.sh
