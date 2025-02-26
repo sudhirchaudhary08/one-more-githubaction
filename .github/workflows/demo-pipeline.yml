@@ -10,7 +10,7 @@ jobs:
       - name: check out repo
         uses: actions/checkout@v4
 
-      - name: list file
+      - name: run the script
         run: |
-          ls
-          cat README.md
+         chmod +x cowart.sh
+         ./cowart.sh
